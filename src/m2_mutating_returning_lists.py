@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and zhen yang.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -38,7 +38,7 @@ def main():
 def run_test_doubler():
     """ Tests the    doubler    function. """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # done: 2. Implement this TEST function.
     #   It TESTS the  doubler  function defined below.
     #   Include at least ** 1 ** ADDITIONAL test beyond those we wrote.
     #
@@ -83,9 +83,40 @@ def run_test_doubler():
     # -------------------------------------------------------------------------
     # TO DO 2 (continued): Add your ADDITIONAL test(s) here:
     # -------------------------------------------------------------------------
+    # Test 2:
+    arga = [10, -3, 20, 4, 5, 6, 7, -10]
+    argb = [5, 0, 8, 7, -5]
+    correct_arga_after = [20, -6, 40, 8, 10, 12, 14, -20]
+    correct_argb_after = [5, 0, 8, 7, -5]
+    expected = [10, 0, 16, 14, -10]
+
+    print()
+    print('BEFORE the function call:')
+    print('  Argument a is:', arga)
+    print('  Argument b is:', argb)
+
+    answer = doubler(arga, argb)
+
+    print('AFTER the function call:')
+    print('  Argument a is:       ', arga)
+    print('  Argument a should be:', correct_arga_after)
+    print('  Argument b is:       ', argb)
+    print('  Argument b should be:', correct_argb_after)
+    print('The returned value is:       ', answer)
+    print('The returned value should be:', expected)
 
 
 def doubler(list1, list2):
+    app = []
+    for j in range(len(list1)):
+        list1[j] = list1[j] * 2
+    for k in range(len(list2)):
+        app += [list2[k]]
+    for a in range(len(app)):
+        app[a] = app[a] * 2
+    return app
+
+
     """
     Both arguments are lists of integers.  This function:
       -- MUTATEs the first list by doubling each number in the list
@@ -103,7 +134,7 @@ def doubler(list1, list2):
         :type list2: list of int
     """
     # -------------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     # -------------------------------------------------------------------------
     # -------------------------------------------------------------------------
