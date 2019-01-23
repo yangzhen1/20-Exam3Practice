@@ -47,7 +47,7 @@ def main():
 def run_test_practice_problem3():
     """ Tests the   practice_problem3  function. """
     ###########################################################################
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  practice_problem3  function defined below.
     #   Include at least ** 2 ** ADDITIONAL tests beyond those we wrote.
     #
@@ -125,6 +125,7 @@ def run_test_practice_problem3():
     # -------------------------------------------------------------------------
     # Run the 14 tests in the   tests   list constructed above.
     # -------------------------------------------------------------------------
+    st.SimpleTestCase.run_tests('practice_problem3', tests)
 
 
     #expecteds = (1,2,3,5,6)
