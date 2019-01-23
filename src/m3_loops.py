@@ -6,8 +6,8 @@ This problem provides practice at:
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Mark Hays, Amanda Stouder, Aaron Wilkin, their colleagues,
-         and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         and Zhen Yang.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 ###############################################################################
 # Students:
@@ -36,6 +36,7 @@ import math
 def main():
     """ Calls the   TEST   functions in this module. """
     run_test_practice_problem3()
+
 
 # -----------------------------------------------------------------------------
 # Students: Some of the testing code below uses SimpleTestCase objects,
@@ -71,6 +72,7 @@ def run_test_practice_problem3():
     #   practice_problem3(-2, 2, 1.3)
     # and compare the returned value against [1, 7] (the correct answer).
     # -------------------------------------------------------------------------
+    print(33)
     tests = [st.SimpleTestCase(practice_problem3,
                                [-2, 2, 1.3],
                                [1, 7]),
@@ -123,7 +125,22 @@ def run_test_practice_problem3():
     # -------------------------------------------------------------------------
     # Run the 14 tests in the   tests   list constructed above.
     # -------------------------------------------------------------------------
-    st.SimpleTestCase.run_tests('practice_problem3', tests)
+
+
+    #expecteds = (1,2,3,5,6)
+    #actuals = practice_problem3(1, 5, -1.2)
+    #print('expected', expecteds)
+    #print('actual',actuals)
+
+    #expecteds = (1,2,3,5,6,7)
+    #actuals = practice_problem3(1, 6, -1.2)
+    #print('expected', expecteds)
+    #print('actual',actuals)
+
+
+
+
+
 
     ###########################################################################
     # TO DO 2 continued:  More tests:
@@ -138,6 +155,16 @@ def run_test_practice_problem3():
 
 
 def practice_problem3(start, n, threshold):
+    print(33)
+    newlist = []
+    k = 0
+    while len(newlist)<n:
+        if math.sin(start + k) + math.cos(start +k) > threshold:
+            newlist.append(start+k)
+        k+=1
+    return newlist
+
+
     """
     What comes in:
       -- An integer:  start
@@ -209,7 +236,7 @@ def practice_problem3(start, n, threshold):
       :type threshold: float
     """
     ###########################################################################
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #          Some tests are already written for you (above),
     #          but you are required to write ADDITIONAL tests (above).
     ###########################################################################
