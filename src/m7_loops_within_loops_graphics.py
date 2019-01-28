@@ -30,11 +30,12 @@ Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
 ###############################################################################
 
 import rosegraphics as rg
+import math
 
 
 def main():
     """ Calls the   TEST   functions in this module. """
-    run_test_hourglass()
+    # run_test_hourglass()
     run_test_many_hourglasses()
 
 
@@ -68,17 +69,34 @@ def hourglass(window, n, point, radius, color):
     circleorg = rg.Circle(point, radius)
     circleorg.fill_color = color
     circleorg.attach_to(window)
-    xorg = point.x
+    xorg = point.x + 2* circleorg.radius
     yorg = point.y
-    for j in range(n):
-        y = yorg - j * yorg
+    height = circleorg.radius * 2 * math.cos(0.523599)
+    for j in range(n+1):
+        y = yorg - (j-1)* height
+        xorg = xorg - circleorg.radius
         for k in range(j):
-            x = xorg + k*xorg
+            x = xorg + k*circleorg.radius* 2
             circlenew = rg.Circle(rg.Point(x,y), radius)
             circlenew.attach_to(window)
-            circlenew.fill_color = color
+            circlenew.fill_color = circleorg.fill_color
+            Line = rg.Line(rg.Point(circlenew.center.x - circleorg.radius, circlenew.center.y),
+                           rg.Point(circlenew.center.x + circleorg.radius, circlenew.center.y))
+            Line.attach_to(window)
             window.render()
-        
+    xorg = point.x - 2 * circleorg.radius
+    for j in range(n+1):
+        y = yorg + (j-1)* height
+        xorg = xorg + circleorg.radius
+        for k in range(j):
+            x = xorg - k*circleorg.radius* 2
+            circlenew = rg.Circle(rg.Point(x,y), radius)
+            circlenew.attach_to(window)
+            circlenew.fill_color = circleorg.fill_color
+            Line = rg.Line(rg.Point(circlenew.center.x - circleorg.radius, circlenew.center.y), rg.Point(circlenew.center.x + circleorg.radius, circlenew.center.y))
+            Line.attach_to(window)
+            window.render()
+
 
 
 
@@ -107,7 +125,7 @@ def hourglass(window, n, point, radius, color):
     a color that rosegraphics understands.
     """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #       We provided some tests for you (above).
     # -------------------------------------------------------------------------
     ###########################################################################
@@ -155,6 +173,29 @@ def run_test_many_hourglasses():
 
 
 def many_hourglasses(window, square, m, colors):
+    list = []
+    count = 0
+    for k in range(20):
+        count += k
+        list.append(count)
+
+
+    xorg = square.center.x
+    yorg = square.center.y
+    length = square.length_of_each_side
+    height = length * 2 * math.cos(0.523599)
+
+    for b in range(m):
+
+        left_down_cornor_x =xorg - length+length*0.5*b+length*list[b]
+        right_up_oornor_x = xorg +length*0.5*b+length*list[b+1]
+        new_rectangle = rg.Rectangle(rg.Point(left_down_cornor_x, yorg + height*(b+1)),
+                                     rg.Point(right_up_oornor_x, yorg - height *(b+1)))
+        new_rectangle.attach_to(window)
+        print(b)
+        hourglass(window, b+1, rg.Point(xorg+length*0.5*b+length*list[b],yorg), length*0.5, colors[b])
+
+
     """
     See   many_hourglasses_picture.pdf   in this project for pictures that may
     help you better understand the following specification:
