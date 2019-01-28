@@ -183,17 +183,17 @@ def many_hourglasses(window, square, m, colors):
     xorg = square.center.x
     yorg = square.center.y
     length = square.length_of_each_side
-    height = length * 2 * math.cos(0.523599)
+    height = length * math.cos(0.523599)
 
     for b in range(m):
 
-        left_down_cornor_x =xorg - length+length*0.5*b+length*list[b]
-        right_up_oornor_x = xorg +length*0.5*b+length*list[b+1]
-        new_rectangle = rg.Rectangle(rg.Point(left_down_cornor_x, yorg + height*(b+1)),
-                                     rg.Point(right_up_oornor_x, yorg - height *(b+1)))
+        left_down_cornor_x =xorg +length*list[b] - length * 0.5
+        right_up_oornor_x = xorg +length*list[b+1] - length * 0.5
+        new_rectangle = rg.Rectangle(rg.Point(left_down_cornor_x, yorg +length*0.5+height*(b)),
+                                     rg.Point(right_up_oornor_x, yorg - length*0.5 - height *(b)))
         new_rectangle.attach_to(window)
         print(b)
-        hourglass(window, b+1, rg.Point(xorg+length*0.5*b+length*list[b],yorg), length*0.5, colors[b])
+        hourglass(window, b+1, rg.Point(xorg+length*0.5*b+length*list[b],yorg), length*0.5, '')
 
 
     """
